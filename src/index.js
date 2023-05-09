@@ -1,4 +1,8 @@
-import { __ } from '@wordpress/i18n';
-import './editor.scss';
+import { registerBlockType } from '@wordpress/blocks';
+import Edit from './edit';
+import save from './save';
 
-alert(__('Loaded!'));
+registerBlockType('learning-gutenberg/data-stores', {
+	edit: Edit,
+	save,
+});

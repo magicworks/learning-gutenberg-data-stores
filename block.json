@@ -1,0 +1,14 @@
+{
+    "apiVersion": 2,
+    "name": "learning-gutenberg/data-stores",
+    "title": "Learning Gutenberg - Todo List",
+    "category": "widgets",
+    "icon": "database",
+    "description": "Example of retrieving information and dispatching actions to the block editor's data store.",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "learning-gutenberg-data-store",
+    "editorScript": "file:./build/index.js",
+    "editorStyle": "file:./build/index.css"
+}
