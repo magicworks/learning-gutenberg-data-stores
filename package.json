@@ -39,8 +39,10 @@
     "@wordpress/components": "^23.9.0",
     "@wordpress/core-data": "^6.9.0",
     "@wordpress/data": "^9.2.0",
+    "@wordpress/edit-post": "^7.9.0",
     "@wordpress/element": "^5.9.0",
     "@wordpress/i18n": "^4.2.4",
+    "@wordpress/plugins": "^6.0.0",
     "wp-scripts": "^0.0.1-security"
   }
 }
