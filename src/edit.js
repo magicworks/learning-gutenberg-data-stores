@@ -2,6 +2,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 import { CheckboxControl, TextControl, Button } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
+import { useEntityProp } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
 import './editor.scss';
 
@@ -23,82 +24,125 @@ export default function Edit() {
 	const actions = useDispatch('learning-gutenberg/todos');
 	const addTodo = actions && actions.addTodo;
 	const toggleTodo = actions && actions.toggleTodo;
+
+	const postType = useSelect((select) => {
+		return select('core/editor').getCurrentPostType();
+	}, []);
+	const [meta, setMeta] = useEntityProp('postType', postType, 'meta');
+	const subTitleValue = meta._blocks_course_post_subtitle;
+
+	const onSubtitleChange = (value) => {
+		setMeta({ ...meta, _blocks_course_post_subtitle: value });
+	};
+
 	return (
 		<div {...useBlockProps()}>
-			{!todos && (
-				<p>
-					{__(
-						'Please make sure your plugin is activated.',
+			<>
+				{subTitleValue || subTitleValue === '' ? (
+					<TextControl
+						label={__(
+							'Post Subtitle',
+							'learning-gutenberg-data-stores'
+						)}
+						value={subTitleValue}
+						onChange={onSubtitleChange}
+					/>
+				) : (
+					__(
+						'Meta Field Not Registered.',
 						'learning-gutenberg-data-stores'
-					)}
-				</p>
-			)}
-			{todos && (
-				<>
-					<ul className="todos-status">
-						<li>
-							<h5>
-								{__('Done:', 'learning-gutenberg-data-stores')}{' '}
-								{data.done}
-							</h5>
-						</li>
-						<li>
-							<h5>
+					)
+				)}
+				{!todos && (
+					<p>
+						{__(
+							'Please make sure your plugin is activated.',
+							'learning-gutenberg-data-stores'
+						)}
+					</p>
+				)}
+				{todos && (
+					<>
+						<ul className="todos-status">
+							<li>
+								<h5>
+									{__(
+										'Done:',
+										'learning-gutenberg-data-stores'
+									)}{' '}
+									{data.done}
+								</h5>
+							</li>
+							<li>
+								<h5>
+									{__(
+										'Not Done:',
+										'learning-gutenberg-data-stores'
+									)}
+									{data.notdone}
+								</h5>
+							</li>
+							<li>
+								<h5>
+									{__(
+										'Total:',
+										'learning-gutenberg-data-stores'
+									)}{' '}
+									{data.total}
+								</h5>
+							</li>
+						</ul>
+						<ul>
+							{todos.map((todo, index) => (
+								<li
+									key={todo.id}
+									className={
+										todo.completed && 'todo-completed'
+									}
+								>
+									<CheckboxControl
+										disabled={todo.loading}
+										label={todo.title}
+										checked={todo.completed}
+										onChange={() => {
+											if (toggleTodo) {
+												toggleTodo(todo, index);
+											}
+										}}
+									/>
+								</li>
+							))}
+						</ul>
+						<form
+							onSubmit={async (e) => {
+								e.preventDefault();
+								if (addTodo && newTodo) {
+									setAddingTodo(true);
+									await addTodo(newTodo);
+									setNewTodo('');
+									setAddingTodo(false);
+								}
+							}}
+							className="addtodo-form"
+						>
+							<TextControl
+								value={newTodo}
+								onChange={(v) => setNewTodo(v)}
+							/>
+							<Button
+								disabled={addingTodo}
+								type="submit"
+								isPrimary
+							>
 								{__(
-									'Not Done:',
+									'Add Todo',
 									'learning-gutenberg-data-stores'
 								)}
-								{data.notdone}
-							</h5>
-						</li>
-						<li>
-							<h5>
-								{__('Total:', 'learning-gutenberg-data-stores')}{' '}
-								{data.total}
-							</h5>
-						</li>
-					</ul>
-					<ul>
-						{todos.map((todo, index) => (
-							<li
-								key={todo.id}
-								className={todo.completed && 'todo-completed'}
-							>
-								<CheckboxControl
-									disabled={todo.loading}
-									label={todo.title}
-									checked={todo.completed}
-									onChange={() => {
-										if (toggleTodo) {
-											toggleTodo(todo, index);
-										}
-									}}
-								/>
-							</li>
-						))}
-					</ul>
-					<form
-						onSubmit={async (e) => {
-							e.preventDefault();
-							if (addTodo && newTodo) {
-								setAddingTodo(true);
-								await addTodo(newTodo);
-								setNewTodo('');
-								setAddingTodo(false);
-							}
-						}}
-						className="addtodo-form"
-					>
-						<TextControl
-							value={newTodo}
-							onChange={(v) => setNewTodo(v)}
-						/>
-						<Button disabled={addingTodo} type="submit" isPrimary>
-							{__('Add Todo', 'learning-gutenberg-data-stores')}
-						</Button>
-					</form>
-				</>
-			)}
+							</Button>
+						</form>
+					</>
+				)}
+			</>
 		</div>
 	);
 }

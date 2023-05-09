@@ -11,7 +11,12 @@
  * Text Domain:       learning-gutenberg-data-stores
  *
  */
+
+include_once('metadata.php');
+include_once('templates.php');
+
 function learning_gutenberg_data_stores_block_init() {
 	register_block_type_from_metadata( __DIR__ );
 }
 add_action( 'init', 'learning_gutenberg_data_stores_block_init' );
+
