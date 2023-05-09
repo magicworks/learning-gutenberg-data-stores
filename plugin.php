@@ -14,6 +14,7 @@
 
 include_once('metadata.php');
 include_once('templates.php');
+include_once('patterns.php');
 
 function learning_gutenberg_data_stores_block_init() {
 	register_block_type_from_metadata( __DIR__ );
