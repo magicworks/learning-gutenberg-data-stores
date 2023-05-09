@@ -3,6 +3,8 @@ import {
 	PluginSidebar,
 	PluginDocumentSettingPanel,
 	PluginPostStatusInfo,
+	PluginPrePublishPanel,
+	PluginPostPublishPanel,
 } from '@wordpress/edit-post';
 import { __ } from '@wordpress/i18n';
 
@@ -19,6 +21,12 @@ registerPlugin('learning-gutenberg-plugin', {
 				<PluginPostStatusInfo>
 					<p>Some Info</p>
 				</PluginPostStatusInfo>
+				<PluginPrePublishPanel title="PrePublish Title">
+					<p>PrePublish Panel Info</p>
+				</PluginPrePublishPanel>
+				<PluginPostPublishPanel title="PostPublish Title">
+					<p>Post Publish Panel Info</p>
+				</PluginPostPublishPanel>
 				<PluginSidebar
 					name="meta-fields-sidebar"
 					icon="admin-settings"
