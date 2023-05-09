@@ -1,38 +1,44 @@
 import { registerPlugin } from '@wordpress/plugins';
-import {
-	PluginSidebar,
-	PluginDocumentSettingPanel,
-	PluginPostStatusInfo,
-	PluginPrePublishPanel,
-	PluginPostPublishPanel,
-} from '@wordpress/edit-post';
+import { PluginSidebar } from '@wordpress/edit-post';
+import { PanelBody, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { useSelect, useDispatch } from '@wordpress/data';
+
+const MetaFieldsInput = () => {
+	const subTitleValue = useSelect((select) => {
+		return select('core/editor').getEditedPostAttribute('meta')
+			._blocks_course_post_subtitle;
+	});
+	const { editPost } = useDispatch('core/editor');
+	return (
+		<PanelBody
+			title={__('Subtitle Options', 'learning-guenberg-data-stores')}
+		>
+			<TextControl
+				label={__('Subtitle', 'learning-gutenberg-data-stores')}
+				value={subTitleValue}
+				onChange={(value) =>
+					editPost({
+						meta: {
+							_blocks_course_post_subtitle: value,
+						},
+					})
+				}
+			/>
+		</PanelBody>
+	);
+};
 
 registerPlugin('learning-gutenberg-plugin', {
 	render: () => {
 		return (
 			<>
-				<PluginDocumentSettingPanel
-					title="My Panel"
-					icon="admin-settings"
-				>
-					<p>Document Settings Panel</p>
-				</PluginDocumentSettingPanel>
-				<PluginPostStatusInfo>
-					<p>Some Info</p>
-				</PluginPostStatusInfo>
-				<PluginPrePublishPanel title="PrePublish Title">
-					<p>PrePublish Panel Info</p>
-				</PluginPrePublishPanel>
-				<PluginPostPublishPanel title="PostPublish Title">
-					<p>Post Publish Panel Info</p>
-				</PluginPostPublishPanel>
 				<PluginSidebar
 					name="meta-fields-sidebar"
 					icon="admin-settings"
 					title={__('Post Options', 'learning-gutenberg-data-stores')}
 				>
-					Custom Sidebar
+					<MetaFieldsInput />
 				</PluginSidebar>
 			</>
 		);
