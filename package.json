@@ -30,7 +30,8 @@
     "@wordpress/stylelint-config": "^19.1.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.5"
+    "lint-staged": "^12.1.5",
+    "prettier": "^2.8.8"
   },
   "dependencies": {
     "@wordpress/block-editor": "^12.0.0",
