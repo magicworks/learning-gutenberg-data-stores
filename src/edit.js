@@ -8,10 +8,18 @@ import './editor.scss';
 export default function Edit() {
 	const [newTodo, setNewTodo] = useState('');
 	const [addingTodo, setAddingTodo] = useState(false);
-	const todos = useSelect((select) => {
+	const data = useSelect((select) => {
 		const todosStore = select('learning-gutenberg/todos');
-		return todosStore && todosStore.getTodos();
+		return (
+			todosStore && {
+				todos: todosStore.getTodos(),
+				total: todosStore.getTodosCount(),
+				done: todosStore.getTodosDoneCount(),
+				notdone: todosStore.getTodosNotDoneCount(),
+			}
+		);
 	}, []);
+	const { todos } = data;
 	const actions = useDispatch('learning-gutenberg/todos');
 	const addTodo = actions && actions.addTodo;
 	const toggleTodo = actions && actions.toggleTodo;
@@ -27,6 +35,29 @@ export default function Edit() {
 			)}
 			{todos && (
 				<>
+					<ul className="todos-status">
+						<li>
+							<h5>
+								{__('Done:', 'learning-gutenberg-data-stores')}{' '}
+								{data.done}
+							</h5>
+						</li>
+						<li>
+							<h5>
+								{__(
+									'Not Done:',
+									'learning-gutenberg-data-stores'
+								)}
+								{data.notdone}
+							</h5>
+						</li>
+						<li>
+							<h5>
+								{__('Total:', 'learning-gutenberg-data-stores')}{' '}
+								{data.total}
+							</h5>
+						</li>
+					</ul>
 					<ul>
 						{todos.map((todo, index) => (
 							<li

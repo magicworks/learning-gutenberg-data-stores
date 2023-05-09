@@ -16,6 +16,12 @@
 .wp-block-learning-gutenberg-data-stores ul li label {
   font-size: 16px;
 }
+.wp-block-learning-gutenberg-data-stores ul.todos-status {
+  display: flex;
+}
+.wp-block-learning-gutenberg-data-stores ul.todos-status li {
+  margin-right: 10px;
+}
 .wp-block-learning-gutenberg-data-stores .addtodo-form {
   display: flex;
   margin-top: 30px;

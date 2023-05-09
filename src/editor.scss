@@ -17,6 +17,14 @@
 				font-size: 16px;
 			}
 		}
+
+		&.todos-status {
+			display: flex;
+
+			li {
+				margin-right: 10px;
+			}
+		}
 	}
 
 	.addtodo-form {
