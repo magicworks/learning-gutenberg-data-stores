@@ -105,6 +105,56 @@ function Edit() {
 
 /***/ }),
 
+/***/ "./src/format-types/highlight.js":
+/*!***************************************!*\
+  !*** ./src/format-types/highlight.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/rich-text */ "@wordpress/rich-text");
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+const HighlightFormatButton = _ref => {
+  let {
+    isActive,
+    value,
+    onChange
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichTextToolbarButton, {
+    icon: "edit",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Highlight 2', 'learning-gutenberg-data-stores'),
+    onClick: () => {
+      onChange((0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_1__.toggleFormat)(value, {
+        type: 'learning-gutenberg/highlight2',
+        attributes: {
+          style: 'background-color: #f0ff00'
+        }
+      }));
+    },
+    isActive: isActive
+  });
+};
+
+(0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_1__.registerFormatType)('learning-gutenberg/highlight2', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Highlight 2', 'learning-gutenberg-data-stores'),
+  tagName: 'span',
+  className: null,
+  edit: HighlightFormatButton
+});
+
+/***/ }),
+
 /***/ "./src/plugins/sidebar.js":
 /*!********************************!*\
   !*** ./src/plugins/sidebar.js ***!
@@ -586,6 +636,16 @@ module.exports = window["wp"]["i18n"];
 
 module.exports = window["wp"]["plugins"];
 
+/***/ }),
+
+/***/ "@wordpress/rich-text":
+/*!**********************************!*\
+  !*** external ["wp","richText"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["richText"];
+
 /***/ })
 
 /******/ 	});
@@ -669,6 +729,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/save.js");
 /* harmony import */ var _todos_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./todos-store */ "./src/todos-store/index.js");
 /* harmony import */ var _plugins_sidebar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./plugins/sidebar */ "./src/plugins/sidebar.js");
+/* harmony import */ var _format_types_highlight__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./format-types/highlight */ "./src/format-types/highlight.js");
+
 
 
 
