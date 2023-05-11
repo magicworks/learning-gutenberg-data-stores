@@ -22,3 +22,22 @@ function learning_gutenberg_data_stores_block_init() {
 }
 add_action( 'init', 'learning_gutenberg_data_stores_block_init' );
 
+//Third parameter needed for creating custom language files
+function learning_gutenberg_data_stores_set_translations() {
+	wp_set_script_translations(
+		'learning-gutenberg-data-stores-editor-script',
+		'learning-gutenberg-data-stores',
+		plugin_dir_path( __FILE__ ) . 'languages'
+	);
+}
+
+add_action('init', 'learning_gutenberg_data_stores_set_translations');
+
+function learning_gutenberg_load_translations( $mofile, $domain ) {
+    if ( 'learning-gutenberg-data-stores' === $domain && false !== strpos( $mofile, WP_LANG_DIR . '/plugins/' ) ) {
+        $locale = apply_filters( 'plugin_locale', determine_locale(), $domain );
+        $mofile = WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/' . $domain . '-' . $locale . '.mo';
+    }
+    return $mofile;
+}
+add_filter( 'load_textdomain_mofile', 'learning_gutenberg_load_translations', 10, 2 );

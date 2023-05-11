@@ -8,7 +8,7 @@
     "supports": {
         "html": false
     },
-    "textdomain": "learning-gutenberg-data-store",
+    "textdomain": "learning-gutenberg-data-stores",
     "editorScript": "file:./build/index.js",
     "editorStyle": "file:./build/index.css"
 }

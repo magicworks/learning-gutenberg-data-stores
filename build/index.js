@@ -120,16 +120,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
-
-
-
+ //import { unregisterBlockType } from '@wordpress/blocks';
+// import { domReady } from '@wordpress/dom-ready';
 
 const changeParagraphIcon = (settings, name) => {
   if (name === 'core/paragraph') {
@@ -653,16 +648,6 @@ module.exports = window["wp"]["data"];
 
 /***/ }),
 
-/***/ "@wordpress/dom-ready":
-/*!**********************************!*\
-  !*** external ["wp","domReady"] ***!
-  \**********************************/
-/***/ (function(module) {
-
-module.exports = window["wp"]["domReady"];
-
-/***/ }),
-
 /***/ "@wordpress/edit-post":
 /*!**********************************!*\
   !*** external ["wp","editPost"] ***!
@@ -802,10 +787,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/save.js");
-/* harmony import */ var _todos_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./todos-store */ "./src/todos-store/index.js");
-/* harmony import */ var _plugins_sidebar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./plugins/sidebar */ "./src/plugins/sidebar.js");
-/* harmony import */ var _format_types_highlight__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./format-types/highlight */ "./src/format-types/highlight.js");
-/* harmony import */ var _filters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./filters */ "./src/filters/index.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _todos_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./todos-store */ "./src/todos-store/index.js");
+/* harmony import */ var _plugins_sidebar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./plugins/sidebar */ "./src/plugins/sidebar.js");
+/* harmony import */ var _format_types_highlight__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./format-types/highlight */ "./src/format-types/highlight.js");
+/* harmony import */ var _filters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./filters */ "./src/filters/index.js");
+
 
 
 
@@ -814,6 +802,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('learning-gutenberg/data-stores', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Learning Gutenberg - Todo List 2', 'learning-gutenberg-data-stores'),
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Example of retrieving information and dispatching actions to the block editor's data store. 2", 'learning-gutenberg-data-stores'),
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
 });

@@ -1,0 +1,98 @@
+# Copyright (C) 2023 Laura Lieknina
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Learning Gutenberg Data Stores 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/learning-gutenberg-data-stores\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-05-11T08:46:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: learning-gutenberg-data-stores\n"
+
+#. Plugin Name of the plugin
+msgid "Learning Gutenberg Data Stores"
+msgstr ""
+
+#. Description of the plugin
+msgid "Learning Gutenberg Data Stores."
+msgstr ""
+
+#. Author of the plugin
+msgid "Laura Lieknina"
+msgstr ""
+
+#: php/patterns.php:5
+msgid "Learning Gutenberg"
+msgstr ""
+
+#: php/patterns.php:13
+msgid "Demo pattern"
+msgstr ""
+
+#: php/patterns.php:14
+msgid "Pattern description"
+msgstr ""
+
+#: build/index.js:67
+msgid "Post Subtitle"
+msgstr ""
+
+#: build/index.js:70
+msgid "Meta Field Not Registered."
+msgstr ""
+
+#: build/index.js:70
+msgid "Please make sure your plugin is activated."
+msgstr ""
+
+#: build/index.js:72
+msgid "Done:"
+msgstr ""
+
+#: build/index.js:72
+msgid "Not Done:"
+msgstr ""
+
+#: build/index.js:72
+msgid "Total:"
+msgstr ""
+
+#: build/index.js:103
+msgid "Add Todo"
+msgstr ""
+
+#: build/index.js:186
+#: build/index.js:200
+msgid "Highlight 2"
+msgstr ""
+
+#: build/index.js:244
+msgid "Subtitle"
+msgstr ""
+
+#: build/index.js:259
+msgid "Post Options"
+msgstr ""
+
+#: build/index.js:805
+msgid "Learning Gutenberg - Todo List 2"
+msgstr ""
+
+#: build/index.js:806
+msgid "Example of retrieving information and dispatching actions to the block editor's data store. 2"
+msgstr ""
+
+#: block.json
+msgctxt "block title"
+msgid "Learning Gutenberg - Todo List"
+msgstr ""
+
+#: block.json
+msgctxt "block description"
+msgid "Example of retrieving information and dispatching actions to the block editor's data store."
+msgstr ""
